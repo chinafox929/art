@@ -136,7 +136,9 @@
                     museum: '巴黎玛摩丹莫奈博物馆',
                     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg',
                     description: '《印象·日出》是法国印象派画家克劳德·莫奈的传世之作，描绘了勒阿弗尔港口的日出景象。这幅画在1874年首次展出时，因其独特的光影表现手法而引发争议，甚至催生了"印象派"这一名称。画面中朦胧的港口、橙红色的太阳倒映在水面上，展现了莫奈对瞬间光影的敏锐捕捉。',
-                    artistBio: '克劳德·莫奈（1840-1926）是法国印象派绘画的创始人之一，也是该哲学最一致的实践者。印象派这个名称即源于他的作品《印象·日出》。莫奈擅长光与影的实验与表现技法，最重要的风格是改变了阴影和轮廓线的画法。'
+                    artistBio: '克劳德·莫奈（1840-1926）是法国印象派绘画的创始人之一，也是该哲学最一致的实践者。印象派这个名称即源于他的作品《印象·日出》。莫奈擅长光与影的实验与表现技法，最重要的风格是改变了阴影和轮廓线的画法。',
+                    videoTitle: '【名画下午茶】印象·日出 - 印象派为什么叫印象派',
+                    videoUrl: 'https://www.bilibili.com/video/BV1CP4y1j7dq/'
                 },
                 'vangogh-starry': {
                     title: '星月夜',
@@ -181,6 +183,13 @@
                     <div class="artwork-description">
                         <h2>作品介绍</h2>
                         <p>${artwork.description}</p>
+                        ${artwork.videoUrl ? `
+                        <div class="video-section" style="margin-top: 30px; padding: 20px; background: #1a1a1a; border-radius: 8px;">
+                            <h3 style="color: #c9a96e; margin-bottom: 15px;">📺 视频介绍</h3>
+                            <p style="margin-bottom: 15px;">${artwork.videoTitle || '相关视频讲解'}</p>
+                            <a href="${artwork.videoUrl}" target="_blank" style="display: inline-block; padding: 12px 24px; background: #c9a96e; color: #000; text-decoration: none; border-radius: 6px; font-weight: bold;">观看视频</a>
+                        </div>
+                        ` : ''}
                     </div>
                     <div class="artist-info">
                         <h3>关于艺术家</h3>

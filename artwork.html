@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品详情 | 云上美术馆</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.8;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,10,0.95);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; color: #c9a96e; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; }
+        .nav-links a:hover { color: #c9a96e; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px 60px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #c9a96e;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .artwork-header {
+            margin-bottom: 40px;
+        }
+        .artwork-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .artwork-meta {
+            color: #c9a96e;
+            font-size: 1.1rem;
+        }
+        .artwork-image {
+            margin-bottom: 40px;
+        }
+        .artwork-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .artwork-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+        .artwork-description h2 {
+            color: #c9a96e;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .artwork-description p {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .artist-info {
+            background: #141414;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .artist-info h3 {
+            color: #c9a96e;
+            margin-bottom: 15px;
+        }
+        .artist-info p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #141414;
+            color: #666;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .artwork-content { grid-template-columns: 1fr; }
+            .artwork-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">◆ 云上美术馆</a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="impressionism.html">印象派</a></li>
+            <li><a href="renaissance.html">文艺复兴</a></li>
+            <li><a href="chinese.html">中国书画</a></li>
+            <li><a href="modern.html">现代艺术</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="#" class="back-link" onclick="history.back(); return false;">← 返回展厅</a>
+        
+        <div id="artwork-content">
+            <!-- 内容将由 JavaScript 动态加载 -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 云上美术馆 · 每日更新</p>
+    </footer>
+
+    <script>
+        // 作品数据库
+        const artworks = {
+            'impressionism': {
+                'monet-sunrise': {
+                    title: '印象·日出',
+                    artist: '克劳德·莫奈',
+                    year: '1872年',
+                    museum: '巴黎玛摩丹莫奈博物馆',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg',
+                    description: '《印象·日出》是法国印象派画家克劳德·莫奈的传世之作，描绘了勒阿弗尔港口的日出景象。这幅画在1874年首次展出时，因其独特的光影表现手法而引发争议，甚至催生了"印象派"这一名称。画面中朦胧的港口、橙红色的太阳倒映在水面上，展现了莫奈对瞬间光影的敏锐捕捉。',
+                    artistBio: '克劳德·莫奈（1840-1926）是法国印象派绘画的创始人之一，也是该哲学最一致的实践者。印象派这个名称即源于他的作品《印象·日出》。莫奈擅长光与影的实验与表现技法，最重要的风格是改变了阴影和轮廓线的画法。'
+                },
+                'vangogh-starry': {
+                    title: '星月夜',
+                    artist: '文森特·梵高',
+                    year: '1889年',
+                    museum: '纽约现代艺术博物馆',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+                    description: '《星月夜》是梵高在圣雷米精神病院疗养期间创作的油画作品。画面中旋转的星云如巨大的漩涡，明亮的星星闪烁着耀眼的光芒。梵高用厚涂法将颜料层层堆叠，形成浮雕般的肌理。那些漩涡状的笔触，后来被天文学家发现与真实的星系旋臂结构惊人相似。',
+                    artistBio: '文森特·梵高（1853-1890）是荷兰后印象派画家。他是表现主义的先驱，并深深影响了二十世纪艺术，尤其是野兽派与德国表现主义。梵高的作品以其浓烈的感情色彩和旋转的笔触著称。'
+                }
+            },
+            'renaissance': {
+                'davinci-monalisa': {
+                    title: '蒙娜丽莎',
+                    artist: '列奥纳多·达·芬奇',
+                    year: '1503-1519年',
+                    museum: '卢浮宫',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+                    description: '《蒙娜丽莎》是文艺复兴时期画家列奥纳多·达·芬奇所绘的肖像画，是世界上最著名的画作之一。画中人物坐姿优雅，背景是梦幻般的山水。她神秘的微笑一直是艺术史上最引人入胜的谜团。',
+                    artistBio: '列奥纳多·达·芬奇（1452-1519）是意大利文艺复兴时期的博学家，同时是画家、雕塑家、建筑师、音乐家、数学家、工程师、发明家、解剖学家、地质学家、制图师、植物学家和作家。他与米开朗基罗和拉斐尔并称文艺复兴三杰。'
+                }
+            }
+        };
+
+        // 从 URL 获取参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const gallery = urlParams.get('gallery') || 'impressionism';
+        const id = urlParams.get('id') || 'monet-sunrise';
+
+        // 加载作品信息
+        const artwork = artworks[gallery]?.[id];
+        if (artwork) {
+            document.getElementById('artwork-content').innerHTML = `
+                <div class="artwork-header">
+                    <h1>${artwork.title}</h1>
+                    <p class="artwork-meta">${artwork.artist} · ${artwork.year} · ${artwork.museum}</p>
+                </div>
+                <div class="artwork-image">
+                    <img src="${artwork.image}" alt="${artwork.title}">
+                </div>
+                <div class="artwork-content">
+                    <div class="artwork-description">
+                        <h2>作品介绍</h2>
+                        <p>${artwork.description}</p>
+                    </div>
+                    <div class="artist-info">
+                        <h3>关于艺术家</h3>
+                        <p>${artwork.artistBio}</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            document.getElementById('artwork-content').innerHTML = `
+                <div style="text-align: center; padding: 100px 0;">
+                    <h2>作品信息加载中...</h2>
+                    <p style="color: #666; margin-top: 20px;">请从展厅页面选择作品查看详情</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

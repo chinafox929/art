@@ -147,7 +147,29 @@
                     museum: '纽约现代艺术博物馆',
                     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
                     description: '《星月夜》是梵高在圣雷米精神病院疗养期间创作的油画作品。画面中旋转的星云如巨大的漩涡，明亮的星星闪烁着耀眼的光芒。梵高用厚涂法将颜料层层堆叠，形成浮雕般的肌理。那些漩涡状的笔触，后来被天文学家发现与真实的星系旋臂结构惊人相似。',
-                    artistBio: '文森特·梵高（1853-1890）是荷兰后印象派画家。他是表现主义的先驱，并深深影响了二十世纪艺术，尤其是野兽派与德国表现主义。梵高的作品以其浓烈的感情色彩和旋转的笔触著称。'
+                    artistBio: '文森特·梵高（1853-1890）是荷兰后印象派画家。他是表现主义的先驱，并深深影响了二十世纪艺术，尤其是野兽派与德国表现主义。梵高的作品以其浓烈的感情色彩和旋转的笔触著称。',
+                    videoTitle: '梵高《星月夜》背后的真实故事',
+                    videoUrl: 'https://www.bilibili.com/video/BV1S54y1G7sD/'
+                },
+                'monet-waterlilies': {
+                    title: '睡莲',
+                    artist: '克劳德·莫奈',
+                    year: '1906年',
+                    museum: '巴黎橘园美术馆',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg',
+                    description: '《睡莲》是莫奈晚年创作的代表作系列。他在吉维尼的花园中建造了日本式的水池，种植了睡莲，并以此为主题创作了超过250幅作品。这幅画捕捉了水面光影的瞬间变化，展现了莫奈对光与色彩的深刻理解。',
+                    artistBio: '克劳德·莫奈（1840-1926）是法国印象派绘画的创始人之一。晚年他专注于睡莲系列的创作，在光影变化中探索色彩的无限可能。',
+                    videoTitle: '莫奈的睡莲：光影的诗篇',
+                    videoUrl: 'https://www.bilibili.com/video/BV1fK4y1e7vJ/'
+                },
+                'renoir-dance': {
+                    title: '煎饼磨坊的舞会',
+                    artist: '皮埃尔·雷诺阿',
+                    year: '1876年',
+                    museum: '巴黎奥赛博物馆',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Pierre-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Google_Art_Project.jpg/800px-Pierre-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Google_Art_Project.jpg',
+                    description: '这幅画描绘了巴黎蒙马特高地煎饼磨坊的欢乐场景。阳光透过树叶洒在人们身上，斑驳的光影效果展现了印象派对光线的独特把握。画中人物姿态自然，充满生活气息。',
+                    artistBio: '皮埃尔·奥古斯特·雷诺阿（1841-1919）是法国印象派重要画家，以描绘人物和社交场景著称，作品色彩明亮，充满温暖。'
                 }
             },
             'renaissance': {
@@ -169,7 +191,8 @@
         const id = urlParams.get('id') || 'monet-sunrise';
 
         // 加载作品信息
-        const artwork = artworks[gallery]?.[id];
+        const galleryData = artworks[gallery];
+        const artwork = galleryData ? galleryData[id] : null;
         if (artwork) {
             document.getElementById('artwork-content').innerHTML = `
                 <div class="artwork-header">

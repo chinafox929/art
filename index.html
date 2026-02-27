@@ -3,260 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>云上美术馆 | Cloud Art Museum</title>
-    <meta name="description" content="云上美术馆 - 在线艺术博物馆，欣赏世界名画">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>云上美术馆</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.8;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,10,0.95);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; color: #c9a96e; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; }
+        .nav-links a:hover { color: #c9a96e; }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1920px-Monet_-_Impression%2C_Sunrise.jpg') center/cover;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
+        .btn {
+            padding: 15px 40px;
+            background: #c9a96e;
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #c9a96e;
+        }
+        .daily-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .daily-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .daily-info h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .daily-info .artist {
+            color: #c9a96e;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .daily-info p {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+        .galleries-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .gallery-card {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery-card:hover img { transform: scale(1.1); }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+        .gallery-overlay h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .gallery-overlay p { color: #ccc; font-size: 0.9rem; }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #141414;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .daily-content { grid-template-columns: 1fr; }
+            .galleries-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
-<body data-page="home">
-    <!-- 页面加载器 -->
-    <div class="page-loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <p class="loader-text">正在进入美术馆...</p>
-        </div>
-    </div>
-
-    <!-- 导航栏 -->
+<body>
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">云上美术馆</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link active">首页</a>
-                </li>
-                <li class="nav-item has-dropdown">
-                    <a href="#" class="nav-link">展厅</a>
-                    <div class="dropdown">
-                        <a href="impressionism.html" class="dropdown-item">印象派展厅</a>
-                        <a href="renaissance.html" class="dropdown-item">文艺复兴展厅</a>
-                        <a href="chinese.html" class="dropdown-item">中国书画展厅</a>
-                        <a href="modern.html" class="dropdown-item">现代艺术展厅</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#daily" class="nav-link">每日推荐</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#galleries" class="nav-link">展厅入口</a>
-                </li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
-        </div>
+        <div class="logo">◆ 云上美术馆</div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#daily">每日推荐</a></li>
+            <li><a href="impressionism.html">印象派</a></li>
+            <li><a href="renaissance.html">文艺复兴</a></li>
+            <li><a href="chinese.html">中国书画</a></li>
+            <li><a href="modern.html">现代艺术</a></li>
+        </ul>
     </nav>
 
-    <!-- 英雄区 -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <p class="hero-subtitle">Cloud Art Museum</p>
-            <h1 class="hero-title">云上美术馆</h1>
-            <p class="hero-desc">穿越时空的艺术之旅，在云端邂逅人类文明的璀璨瑰宝</p>
-            <a href="#galleries" class="hero-cta">
-                <span>开始参观</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-        <div class="scroll-indicator">
-            <span>向下滚动</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
+    <section class="hero" id="home">
+        <h1>云上美术馆</h1>
+        <p>穿越时空的艺术之旅，在云端邂逅人类文明的璀璨瑰宝</p>
+        <a href="#daily" class="btn">开始参观</a>
     </section>
 
-    <!-- 每日推荐 -->
-    <section class="daily-feature" id="daily">
-        <div class="section-header">
-            <p class="section-label">Daily Feature</p>
-            <h2 class="section-title">每日推荐</h2>
-        </div>
-        <div class="feature-container">
-            <div class="feature-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg" alt="睡莲">
+    <section class="section" id="daily">
+        <h2 class="section-title">每日推荐</h2>
+        <div class="daily-content">
+            <div class="daily-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg" alt="印象·日出">
             </div>
-            <div class="feature-content">
-                <p class="feature-date">2026年2月27日</p>
-                <h3 class="feature-artwork-title">睡莲</h3>
-                <p class="feature-artist">克劳德·莫奈 | 1906年</p>
-                <p class="feature-desc">
-                    《睡莲》是法国印象派画家克劳德·莫奈晚年创作的一系列画作。莫奈在吉维尼的花园中建造了日本式的水池，种植了睡莲，并以此为主题创作了超过250幅作品。这幅画捕捉了水面光影的瞬间变化，展现了莫奈对光与色彩的深刻理解。
-                </p>
-                <a href="artwork.html?gallery=impressionism&id=imp-1" class="feature-btn">
-                    <span>查看详情</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
+            <div class="daily-info">
+                <h3>印象·日出</h3>
+                <p class="artist">克劳德·莫奈 | 1872年 | 巴黎玛摩丹莫奈博物馆</p>
+                <p>《印象·日出》是法国印象派画家克劳德·莫奈的传世之作，描绘了勒阿弗尔港口的日出景象。这幅画在1874年首次展出时，因其独特的光影表现手法而引发争议，甚至催生了"印象派"这一名称。画面中朦胧的港口、橙红色的太阳倒映在水面上，展现了莫奈对瞬间光影的敏锐捕捉。</p>
+                <a href="impressionism.html" class="btn">进入展厅</a>
             </div>
         </div>
     </section>
 
-    <!-- 展厅入口 -->
-    <section class="galleries-section" id="galleries">
-        <div class="section-header">
-            <p class="section-label">Galleries</p>
-            <h2 class="section-title">展厅入口</h2>
-        </div>
+    <section class="section" style="background: #141414;">
+        <h2 class="section-title">展厅入口</h2>
         <div class="galleries-grid">
-            <!-- 印象派展厅 -->
             <a href="impressionism.html" class="gallery-card">
-                <div class="gallery-card-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg')"></div>
-                <div class="gallery-card-overlay">
-                    <span class="gallery-card-number">01</span>
-                    <h3 class="gallery-card-title">印象派展厅</h3>
-                    <p class="gallery-card-desc">光影流转，捕捉瞬间之美。莫奈、梵高、雷诺阿等大师杰作。</p>
-                </div>
-                <div class="gallery-card-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="印象派">
+                <div class="gallery-overlay">
+                    <h3>印象派展厅</h3>
+                    <p>莫奈、梵高、雷诺阿等大师杰作</p>
                 </div>
             </a>
-
-            <!-- 文艺复兴展厅 -->
             <a href="renaissance.html" class="gallery-card">
-                <div class="gallery-card-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/600px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg')"></div>
-                <div class="gallery-card-overlay">
-                    <span class="gallery-card-number">02</span>
-                    <h3 class="gallery-card-title">文艺复兴展厅</h3>
-                    <p class="gallery-card-desc">人文觉醒，艺术巅峰。达芬奇、米开朗基罗、拉斐尔经典之作。</p>
-                </div>
-                <div class="gallery-card-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/600px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="文艺复兴">
+                <div class="gallery-overlay">
+                    <h3>文艺复兴展厅</h3>
+                    <p>达芬奇、米开朗基罗、拉斐尔经典之作</p>
                 </div>
             </a>
-
-            <!-- 中国书画展厅 -->
             <a href="chinese.html" class="gallery-card">
-                <div class="gallery-card-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Qingming_Festival_Detail_6.jpg')"></div>
-                <div class="gallery-card-overlay">
-                    <span class="gallery-card-number">03</span>
-                    <h3 class="gallery-card-title">中国书画展厅</h3>
-                    <p class="gallery-card-desc">笔墨丹青，东方意境。张择端、李可染、齐白石等国宝级作品。</p>
-                </div>
-                <div class="gallery-card-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/800px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg" alt="中国书画">
+                <div class="gallery-overlay">
+                    <h3>中国书画展厅</h3>
+                    <p>张择端、李可染、齐白石等国宝级作品</p>
                 </div>
             </a>
-
-            <!-- 现代艺术展厅 -->
             <a href="modern.html" class="gallery-card">
-                <div class="gallery-card-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6f/Mural_del_Gernika.jpg')"></div>
-                <div class="gallery-card-overlay">
-                    <span class="gallery-card-number">04</span>
-                    <h3 class="gallery-card-title">现代艺术展厅</h3>
-                    <p class="gallery-card-desc">突破传统，探索边界。毕加索、蒙克、达利等现代大师作品。</p>
-                </div>
-                <div class="gallery-card-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg" alt="现代艺术">
+                <div class="gallery-overlay">
+                    <h3>现代艺术展厅</h3>
+                    <p>毕加索、蒙克、达利等现代大师作品</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo">云上美术馆</h3>
-                    <p class="footer-desc">致力于让艺术触手可及，为全球艺术爱好者提供高品质的在线观展体验。</p>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">展厅</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="impressionism.html">印象派展厅</a></li>
-                        <li class="footer-link"><a href="renaissance.html">文艺复兴展厅</a></li>
-                        <li class="footer-link"><a href="chinese.html">中国书画展厅</a></li>
-                        <li class="footer-link"><a href="modern.html">现代艺术展厅</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">关于</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">关于我们</a></li>
-                        <li class="footer-link"><a href="#">联系方式</a></li>
-                        <li class="footer-link"><a href="#">使用条款</a></li>
-                        <li class="footer-link"><a href="#">隐私政策</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">关注</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">微信公众号</a></li>
-                        <li class="footer-link"><a href="#">新浪微博</a></li>
-                        <li class="footer-link"><a href="#">小红书</a></li>
-                        <li class="footer-link"><a href="#">抖音</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 云上美术馆 Cloud Art Museum. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="微信">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="微博">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.194.573zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.579-.18-.405-.649.389-1.061.429-1.978.002-2.635-.801-1.235-2.996-1.17-5.518-.034 0 0-.791.345-.589-.281.389-1.236.33-2.271-.275-2.869-1.373-1.354-5.025.052-8.151 3.144C.676 11.061 0 13.075 0 14.789c0 3.287 4.217 5.289 8.342 5.289 5.402 0 8.995-3.14 8.995-5.637 0-1.507-1.272-2.361-2.278-2.792zm2.793-4.251c-.846-.935-2.088-1.27-3.285-1.082-.349.054-.584.373-.53.72.054.347.373.582.72.529.799-.124 1.619.096 2.188.724.569.627.748 1.471.531 2.256-.09.337.113.686.451.777.337.09.686-.113.777-.451.319-1.166.058-2.416-.852-3.473zm2.207-2.339c-1.55-1.711-3.824-2.326-6.016-1.876-.346.07-.57.406-.5.752.07.346.406.57.752.5 1.726-.351 3.524.127 4.755 1.485 1.232 1.358 1.569 3.204 1.04 4.842-.104.337.087.693.425.797.337.104.693-.087.797-.425.663-2.083.24-4.443-1.253-6.075z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <footer>
+        <p>© 2026 云上美术馆 · 每日更新</p>
     </footer>
-
-    <!-- 音乐播放器 -->
-    <div class="music-player">
-        <div class="music-info">
-            <span class="music-title">月光</span>
-            <span class="music-artist">德彪西</span>
-        </div>
-        <div class="music-controls">
-            <button class="music-btn music-prev">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-                </svg>
-            </button>
-            <button class="music-btn play-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            </button>
-            <button class="music-btn music-next">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-                </svg>
-            </button>
-        </div>
-        <div class="music-progress">
-            <div class="music-progress-bar"></div>
-        </div>
-    </div>
-
-    <!-- 图片放大模态框 -->
-    <div class="image-modal">
-        <button class="image-modal-close">×</button>
-        <button class="image-modal-nav prev">‹</button>
-        <div class="image-modal-content">
-            <img src="" alt="">
-        </div>
-        <button class="image-modal-nav next">›</button>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

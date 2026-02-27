@@ -4,211 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文艺复兴展厅 | 云上美术馆</title>
-    <meta name="description" content="文艺复兴展厅 - 欣赏达芬奇、米开朗基罗、拉斐尔等文艺复兴大师杰作">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.8;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,10,0.95);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; color: #c9a96e; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; }
+        .nav-links a:hover { color: #c9a96e; }
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1920px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg') center/cover;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; }
+        .hero p { color: #ccc; max-width: 600px; padding: 0 20px; }
+        .section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #c9a96e;
+        }
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .artwork-card {
+            background: #141414;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+        .artwork-card:hover { transform: translateY(-5px); }
+        .artwork-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .artwork-info { padding: 20px; }
+        .artwork-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .artwork-info .artist {
+            color: #c9a96e;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .artwork-info p {
+            color: #999;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #141414;
+            color: #666;
+        }
+    </style>
 </head>
-<body data-page="gallery" data-gallery="renaissance">
-    <!-- 页面加载器 -->
-    <div class="page-loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <p class="loader-text">正在进入文艺复兴展厅...</p>
-        </div>
-    </div>
-
-    <!-- 导航栏 -->
+<body>
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">云上美术馆</a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
-                <li class="nav-item has-dropdown">
-                    <a href="#" class="nav-link active">展厅</a>
-                    <div class="dropdown">
-                        <a href="impressionism.html" class="dropdown-item">印象派展厅</a>
-                        <a href="renaissance.html" class="dropdown-item">文艺复兴展厅</a>
-                        <a href="chinese.html" class="dropdown-item">中国书画展厅</a>
-                        <a href="modern.html" class="dropdown-item">现代艺术展厅</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="index.html#daily" class="nav-link">每日推荐</a></li>
-                <li class="nav-item"><a href="index.html#galleries" class="nav-link">展厅入口</a></li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
-        </div>
+        <a href="index.html" class="logo">◆ 云上美术馆</a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="impressionism.html">印象派</a></li>
+            <li><a href="renaissance.html">文艺复兴</a></li>
+            <li><a href="chinese.html">中国书画</a></li>
+            <li><a href="modern.html">现代艺术</a></li>
+        </ul>
     </nav>
 
-    <!-- 展厅英雄区 -->
-    <section class="gallery-hero">
-        <div class="gallery-hero-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg')"></div>
-        <div class="gallery-hero-overlay"></div>
-        <div class="gallery-hero-content">
-            <p class="section-label">Renaissance Gallery</p>
-            <h1 class="gallery-hero-title">文艺复兴展厅</h1>
-            <p class="gallery-hero-desc">
-                文艺复兴是14至17世纪欧洲文化与艺术的伟大复兴。以人文主义为核心，艺术家们重新发现古典传统，追求真实与美，创造了人类艺术史上最辉煌的篇章。
-            </p>
+    <section class="hero">
+        <h1>文艺复兴展厅</h1>
+        <p>文艺复兴是14-17世纪起源于意大利的文化运动，标志着中世纪的结束和现代世界的开端。达芬奇、米开朗基罗、拉斐尔等大师创造了人类艺术史上最辉煌的篇章。</p>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">代表作品</h2>
+        <div class="artwork-grid">
+            <a href="artwork.html?gallery=renaissance&id=davinci-monalisa" class="artwork-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="蒙娜丽莎">
+                <div class="artwork-info">
+                    <h3>蒙娜丽莎</h3>
+                    <p class="artist">列奥纳多·达·芬奇 · 1503-1519年</p>
+                    <p>世界上最著名的肖像画，神秘的微笑至今仍是艺术史上的谜团。</p>
+                </div>
+            </a>
+
+            <a href="artwork.html?gallery=renaissance&id=michelangelo-creation" class="artwork-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/800px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg" alt="创造亚当">
+                <div class="artwork-info">
+                    <h3>创造亚当</h3>
+                    <p class="artist">米开朗基罗 · 1512年</p>
+                    <p>西斯廷礼拜堂天顶画，描绘了上帝将生命之火传给亚当的经典瞬间。</p>
+                </div>
+            </a>
+
+            <a href="artwork.html?gallery=renaissance&id=raphael-school" class="artwork-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Raffaello_Sanzio_-_La_scuola_di_Atene_-_Google_Art_Project.jpg/800px-Raffaello_Sanzio_-_La_scuola_di_Atene_-_Google_Art_Project.jpg" alt="雅典学院">
+                <div class="artwork-info">
+                    <h3>雅典学院</h3>
+                    <p class="artist">拉斐尔 · 1509-1511年</p>
+                    <p>文艺复兴盛期的巅峰之作，汇聚了古希腊最伟大的哲学家和科学家。</p>
+                </div>
+            </a>
+
+            <a href="artwork.html?gallery=renaissance&id=botticelli-birth" class="artwork-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="维纳斯的诞生">
+                <div class="artwork-info">
+                    <h3>维纳斯的诞生</h3>
+                    <p class="artist">波提切利 · 1485年</p>
+                    <p>描绘了爱与美之神维纳斯从海中诞生的场景，是文艺复兴早期的杰作。</p>
+                </div>
+            </a>
         </div>
     </section>
 
-    <!-- 展厅作品 -->
-    <section class="gallery-works">
-        <div class="section-header">
-            <p class="section-label">Collection</p>
-            <h2 class="section-title">馆藏作品</h2>
-        </div>
-        <div class="works-grid">
-            <!-- 作品1：蒙娜丽莎 -->
-            <div class="work-card" onclick="goToArtwork('ren-1')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="蒙娜丽莎" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">蒙娜丽莎</h3>
-                    <p class="work-card-artist">列奥纳多·达·芬奇</p>
-                    <p class="work-card-year">1503-1519年 | 卢浮宫</p>
-                </div>
-            </div>
-
-            <!-- 作品2：创造亚当 -->
-            <div class="work-card" onclick="goToArtwork('ren-2')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/%27Adam%27s_Creation_Sistine_Chapel_ceiling%27_by_Michelangelo_JBU33cut.jpg" alt="创造亚当" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">创造亚当</h3>
-                    <p class="work-card-artist">米开朗基罗</p>
-                    <p class="work-card-year">1508-1512年 | 西斯廷教堂</p>
-                </div>
-            </div>
-
-            <!-- 作品3：雅典学院 -->
-            <div class="work-card" onclick="goToArtwork('ren-3')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg" alt="雅典学院" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">雅典学院</h3>
-                    <p class="work-card-artist">拉斐尔</p>
-                    <p class="work-card-year">1509-1511年 | 梵蒂冈宫</p>
-                </div>
-            </div>
-
-            <!-- 作品4：最后的晚餐 -->
-            <div class="work-card" onclick="goToArtwork('ren-4')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg" alt="最后的晚餐" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">最后的晚餐</h3>
-                    <p class="work-card-artist">列奥纳多·达·芬奇</p>
-                    <p class="work-card-year">1495-1498年 | 圣玛利亚修道院</p>
-                </div>
-            </div>
-
-            <!-- 作品5：大卫 -->
-            <div class="work-card" onclick="goToArtwork('ren-5')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Michelangelo_David_-_3.jpg" alt="大卫" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">大卫</h3>
-                    <p class="work-card-artist">米开朗基罗</p>
-                    <p class="work-card-year">1501-1504年 | 佛罗伦萨学院美术馆</p>
-                </div>
-            </div>
-
-            <!-- 作品6：西斯廷圣母 -->
-            <div class="work-card" onclick="goToArtwork('ren-6')">
-                <div class="work-card-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Raffaello_Sanzio_-_Madonna_Sistina_-_Google_Art_Project.jpg" alt="西斯廷圣母" loading="lazy">
-                    <div class="work-card-overlay"><span class="work-card-view">查看详情</span></div>
-                </div>
-                <div class="work-card-info">
-                    <h3 class="work-card-title">西斯廷圣母</h3>
-                    <p class="work-card-artist">拉斐尔</p>
-                    <p class="work-card-year">1512-1514年 | 德累斯顿国家艺术收藏馆</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo">云上美术馆</h3>
-                    <p class="footer-desc">致力于让艺术触手可及，为全球艺术爱好者提供高品质的在线观展体验。</p>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">展厅</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="impressionism.html">印象派展厅</a></li>
-                        <li class="footer-link"><a href="renaissance.html">文艺复兴展厅</a></li>
-                        <li class="footer-link"><a href="chinese.html">中国书画展厅</a></li>
-                        <li class="footer-link"><a href="modern.html">现代艺术展厅</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">关于</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">关于我们</a></li>
-                        <li class="footer-link"><a href="#">联系方式</a></li>
-                        <li class="footer-link"><a href="#">使用条款</a></li>
-                        <li class="footer-link"><a href="#">隐私政策</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">关注</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">微信公众号</a></li>
-                        <li class="footer-link"><a href="#">新浪微博</a></li>
-                        <li class="footer-link"><a href="#">小红书</a></li>
-                        <li class="footer-link"><a href="#">抖音</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 云上美术馆 Cloud Art Museum. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="微信"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg></a>
-                    <a href="#" aria-label="微博"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.194.573zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.579-.18-.405-.649.389-1.061.429-1.978.002-2.635-.801-1.235-2.996-1.17-5.518-.034 0 0-.791.345-.589-.281.389-1.236.33-2.271-.275-2.869-1.373-1.354-5.025.052-8.151 3.144C.676 11.061 0 13.075 0 14.789c0 3.287 4.217 5.289 8.342 5.289 5.402 0 8.995-3.14 8.995-5.637 0-1.507-1.272-2.361-2.278-2.792zm2.793-4.251c-.846-.935-2.088-1.27-3.285-1.082-.349.054-.584.373-.53.72.054.347.373.582.72.529.799-.124 1.619.096 2.188.724.569.627.748 1.471.531 2.256-.09.337.113.686.451.777.337.09.686-.113.777-.451.319-1.166.058-2.416-.852-3.473zm2.207-2.339c-1.55-1.711-3.824-2.326-6.016-1.876-.346.07-.57.406-.5.752.07.346.406.57.752.5 1.726-.351 3.524.127 4.755 1.485 1.232 1.358 1.569 3.204 1.04 4.842-.104.337.087.693.425.797.337.104.693-.087.797-.425.663-2.083.24-4.443-1.253-6.075z"/></svg></a>
-                </div>
-            </div>
-        </div>
+    <footer>
+        <p>© 2026 云上美术馆 · 每日更新</p>
     </footer>
-
-    <!-- 音乐播放器 -->
-    <div class="music-player">
-        <div class="music-info">
-            <span class="music-title">四季·春</span>
-            <span class="music-artist">维瓦尔第</span>
-        </div>
-        <div class="music-controls">
-            <button class="music-btn music-prev"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-            <button class="music-btn play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-            <button class="music-btn music-next"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
-        </div>
-        <div class="music-progress"><div class="music-progress-bar"></div></div>
-    </div>
-
-    <!-- 图片放大模态框 -->
-    <div class="image-modal">
-        <button class="image-modal-close">×</button>
-        <button class="image-modal-nav prev">‹</button>
-        <div class="image-modal-content"><img src="" alt=""></div>
-        <button class="image-modal-nav next">›</button>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

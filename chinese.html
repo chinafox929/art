@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国书画展厅 | 云上美术馆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="chinese">
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">正在进入展厅...</p>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">云上美术馆</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link active">展厅</a>
+                    <div class="dropdown">
+                        <a href="impressionism.html" class="dropdown-item">印象派展厅</a>
+                        <a href="renaissance.html" class="dropdown-item">文艺复兴展厅</a>
+                        <a href="chinese.html" class="dropdown-item active">中国书画展厅</a>
+                        <a href="modern.html" class="dropdown-item">现代艺术展厅</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="gallery-hero">
+        <div class="gallery-hero-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/1920px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg')"></div>
+        <div class="gallery-hero-overlay"></div>
+        <div class="gallery-hero-content">
+            <span class="gallery-tag">东方意境</span>
+            <h1 class="gallery-title">中国书画展厅</h1>
+            <p class="gallery-desc">从北宋到近现代，领略中国山水画的意境之美</p>
+        </div>
+    </header>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-intro">
+                <h2>展厅介绍</h2>
+                <p>中国书画艺术源远流长，从宋代的院体画到元明清的文人画，再到近现代的创新变革，形成了独特的艺术体系。本展厅精选历代名作，带您感受"可行可望可游可居"的艺术境界。</p>
+            </div>
+
+            <div class="artwork-grid">
+                <div class="artwork-card" onclick="openModal('qingming')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/800px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg" alt="清明上河图">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>清明上河图</h3>
+                        <p class="artist">张择端 · 北宋</p>
+                        <p class="desc">中国十大传世名画之一，生动记录了北宋都城汴京的繁华景象。</p>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openModal('wangximeng')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Wang_Ximeng_-_A_Thousand_Li_of_Rivers_and_Mountains_-_Google_Art_Project.jpg/800px-Wang_Ximeng_-_A_Thousand_Li_of_Rivers_and_Mountains_-_Google_Art_Project.jpg" alt="千里江山图">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>千里江山图</h3>
+                        <p class="artist">王希孟 · 北宋</p>
+                        <p class="desc">青绿山水画的巅峰之作，18岁少年天才的唯一传世作品。</p>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openModal('fuchun')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dwelling_in_the_Fuchun_Mountains_%28The_Remaining_Mountain%29.jpg/800px-Dwelling_in_the_Fuchun_Mountains_%28The_Remaining_Mountain%29.jpg" alt="富春山居图">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>富春山居图</h3>
+                        <p class="artist">黄公望 · 元代</p>
+                        <p class="desc">中国山水画的至高境界，被誉为"画中之兰亭"。</p>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openModal('lishan')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Li_Keran_-_Landscape.jpg/800px-Li_Keran_-_Landscape.jpg" alt="万山红遍">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>万山红遍</h3>
+                        <p class="artist">李可染 · 1964年</p>
+                        <p class="desc">近现代山水画革新之作，以朱砂点染山林，开创红色山水新风。</p>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openModal('shrimp')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Qi_Baishi_-_Shrimp.jpg/800px-Qi_Baishi_-_Shrimp.jpg" alt="虾">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>虾</h3>
+                        <p class="artist">齐白石 · 近现代</p>
+                        <p class="desc">齐白石代表作，以墨色的浓淡变化表现虾的灵动与透明质感。</p>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openModal('horse')">
+                    <div class="artwork-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Xu_Beihong_-_Galloping_Horse.jpg/800px-Xu_Beihong_-_Galloping_Horse.jpg" alt="奔马图">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>奔马图</h3>
+                        <p class="artist">徐悲鸿 · 近现代</p>
+                        <p class="desc">融合中西画法，以奔马象征民族精神，笔墨酣畅，气势磅礴。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="artworkModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

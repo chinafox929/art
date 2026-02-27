@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云上美术馆 | 每日艺术推荐</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 音乐播放器 -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-toggle" id="playerToggle">
+            <span class="music-icon">🎵</span>
+            <span class="player-text">音乐</span>
+        </div>
+        <div class="player-panel" id="playerPanel">
+            <div class="now-playing">
+                <div class="track-info">
+                    <span class="track-name" id="trackName">选择音乐</span>
+                    <span class="track-artist" id="trackArtist">营造观展氛围</span>
+                </div>
+                <button class="play-btn" id="playBtn">▶</button>
+            </div>
+            <div class="music-list">
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-name="月光奏鸣曲" data-artist="贝多芬">
+                    <span class="item-name">🌙 月光奏鸣曲</span>
+                    <span class="item-artist">贝多芬</span>
+                </div>
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-name="四季·春" data-artist="维瓦尔第">
+                    <span class="item-name">🌸 四季·春</span>
+                    <span class="item-artist">维瓦尔第</span>
+                </div>
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-name="卡农" data-artist="帕赫贝尔">
+                    <span class="item-name">🎹 卡农</span>
+                    <span class="item-artist">帕赫贝尔</span>
+                </div>
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" data-name="夜曲" data-artist="肖邦">
+                    <span class="item-name">🌃 夜曲</span>
+                    <span class="item-artist">肖邦</span>
+                </div>
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" data-name="天鹅湖" data-artist="柴可夫斯基">
+                    <span class="item-name">🦢 天鹅湖</span>
+                    <span class="item-artist">柴可夫斯基</span>
+                </div>
+                <div class="music-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" data-name="古琴禅意" data-artist="中国传统">
+                    <span class="item-name">🎋 古琴禅意</span>
+                    <span class="item-artist">中国传统</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🏛️</span>
+            <span class="brand-text">云上美术馆</span>
+        </div>
+        <div class="nav-links">
+            <a href="#daily" class="nav-link active">今日推荐</a>
+            <a href="#gallery" class="nav-link">馆藏精品</a>
+            <a href="#exhibition" class="nav-link">特展</a>
+            <a href="#archive" class="nav-link">归档</a>
+        </div>
+    </nav>
+
+    <!-- 主视觉区 -->
+    <header class="hero">
+        <div class="hero-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1920px-Monet_-_Impression%2C_Sunrise.jpg')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-date">2026年2月27日</p>
+            <h1 class="hero-title">光与色彩的觉醒</h1>
+            <p class="hero-subtitle">克劳德·莫奈 · 印象派的开山之作</p>
+            <a href="#daily" class="hero-cta">开始观展</a>
+        </div>
+    </header>
+
+    <!-- 今日推荐 -->
+    <section id="daily" class="section daily-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">今日推荐</span>
+                <h2 class="section-title">每日一画</h2>
+                <p class="section-desc">每天精选一件艺术珍品，带你走进艺术家的内心世界</p>
+            </div>
+
+            <div class="daily-artwork">
+                <div class="artwork-main">
+                    <div class="artwork-image-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg" 
+                             alt="印象·日出" 
+                             class="artwork-image"
+                             id="mainArtwork">
+                        <div class="image-zoom-hint">点击放大</div>
+                    </div>
+                    <div class="artwork-info">
+                        <h3 class="artwork-title">印象·日出</h3>
+                        <p class="artwork-meta">
+                            <span class="artist">克劳德·莫奈</span>
+                            <span class="divider">·</span>
+                            <span class="year">1872年</span>
+                            <span class="divider">·</span>
+                            <span class="museum">巴黎玛摩丹莫奈博物馆</span>
+                        </p>
+                        <div class="artwork-tags">
+                            <span class="tag">印象派</span>
+                            <span class="tag">油画</span>
+                            <span class="tag">风景</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-content">
+                    <div class="content-block">
+                        <h4>🎨 作品解读</h4>
+                        <p>《印象·日出》创作于1872年，描绘了莫奈故乡勒阿弗尔港口的日出景象。画面中，一轮红日悬挂在灰蓝色的晨雾中，水面倒映着朦胧的光影，几艘小船若隐若现，烟囱的轮廓在雾气中若隐若现。</p>
+                        <p>这幅画于1874年在巴黎首次展出时，评论家路易·勒鲁瓦嘲讽其为"印象派"——本意是贬义，却意外成为这场艺术革命的名称。莫奈用快速、松散的笔触捕捉瞬间的光影变化，而非精细的写实描绘，开创了西方绘画的新纪元。</p>
+                    </div>
+
+                    <div class="content-block">
+                        <h4>💡 艺术亮点</h4>
+                        <ul>
+                            <li><strong>光影瞬间：</strong>捕捉日出时分转瞬即逝的光影效果</li>
+                            <li><strong>色彩革命：</strong>摒弃传统棕褐色调，大胆使用蓝、紫、橙等鲜艳色彩</li>
+                            <li><strong>笔触自由：</strong>快速、松散的笔触营造出朦胧的视觉效果</li>
+                            <li><strong>户外写生：</strong>直接在自然光下作画，记录真实的视觉感受</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h4>🌟 艺术家生平</h4>
+                        <p>克劳德·莫奈（1840-1926），法国印象派创始人之一，被誉为"印象派之父"。他毕生致力于捕捉光线与色彩在不同时间、季节下的变化，创作了《睡莲》《鲁昂大教堂》等大量系列作品。</p>
+                        <p>莫奈晚年隐居吉维尼，建造了著名的日本花园和睡莲池塘，在那里创作了250多幅睡莲系列作品，将印象派推向抽象艺术的边缘。1926年，这位光影大师在吉维尼逝世，享年86岁。</p>
+                        <p class="quote">"我想用一种鸟儿在唱歌的方式画画。" ——莫奈</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 相关推荐 -->
+            <div class="related-works">
+                <h4 class="related-title">相关推荐</h4>
+                <div class="related-grid">
+                    <div class="related-item" onclick="showArtwork('starrynight')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="星月夜">
+                        <div class="related-info">
+                            <span class="related-name">星月夜</span>
+                            <span class="related-artist">梵高</span>
+                        </div>
+                    </div>
+                    <div class="related-item" onclick="showArtwork('waterlilies')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg" alt="睡莲">
+                        <div class="related-info">
+                            <span class="related-name">睡莲</span>
+                            <span class="related-artist">莫奈</span>
+                        </div>
+                    </div>
+                    <div class="related-item" onclick="showArtwork('rouen')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Monet_-_Cathedral_of_Rouen.JPG/800px-Monet_-_Cathedral_of_Rouen.JPG" alt="鲁昂大教堂">
+                        <div class="related-info">
+                            <span class="related-name">鲁昂大教堂</span>
+                            <span class="related-artist">莫奈</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 馆藏精品 -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">馆藏精品</span>
+                <h2 class="section-title">探索艺术</h2>
+                <p class="section-desc">按流派、时期、地区浏览经典名作</p>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="impressionism">印象派</button>
+                <button class="filter-btn" data-filter="renaissance">文艺复兴</button>
+                <button class="filter-btn" data-filter="chinese">中国书画</button>
+                <button class="filter-btn" data-filter="modern">现代艺术</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="impressionism">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="星月夜">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>星月夜</h5>
+                        <p>梵高 · 1889</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="impressionism">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg" alt="睡莲">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>睡莲</h5>
+                        <p>莫奈 · 1906</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renaissance">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="蒙娜丽莎">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>蒙娜丽莎</h5>
+                        <p>达芬奇 · 1503</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renaissance">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/800px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg" alt="创造亚当">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>创造亚当</h5>
+                        <p>米开朗基罗 · 1512</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="chinese">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/800px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg" alt="清明上河图">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>清明上河图</h5>
+                        <p>张择端 · 北宋</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="chinese">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Li_Keran_-_Landscape.jpg/800px-Li_Keran_-_Landscape.jpg" alt="山水画">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>万山红遍</h5>
+                        <p>李可染 · 1964</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="modern">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg" alt="格尔尼卡">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>格尔尼卡</h5>
+                        <p>毕加索 · 1937</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="impressionism">
+                    <div class="item-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Pierre-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Google_Art_Project.jpg/800px-Pierre-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Google_Art_Project.jpg" alt="煎饼磨坊的舞会">
+                    </div>
+                    <div class="item-overlay">
+                        <h5>煎饼磨坊的舞会</h5>
+                        <p>雷诺阿 · 1876</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特展 -->
+    <section id="exhibition" class="section exhibition-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">特别展览</span>
+                <h2 class="section-title">当前展览</h2>
+            </div>
+
+            <div class="exhibition-list">
+                <div class="exhibition-card">
+                    <div class="exhibition-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg" alt="印象之光">
+                    </div>
+                    <div class="exhibition-info">
+                        <span class="exhibition-status">正在展出</span>
+                        <h3>印象之光：莫奈与印象派大师</h3>
+                        <p class="exhibition-date">2026.02.27 - 2026.03.27</p>
+                        <p class="exhibition-desc">探索印象派如何从一场争议中诞生，感受莫奈、雷诺阿、德加等大师如何用画笔捕捉光与色彩的瞬间，改变西方艺术史的进程。</p>
+                        <button class="exhibition-btn">进入展厅</button>
+                    </div>
+                </div>
+
+                <div class="exhibition-card">
+                    <div class="exhibition-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/800px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg" alt="东方意境">
+                    </div>
+                    <div class="exhibition-info">
+                        <span class="exhibition-status upcoming">即将开幕</span>
+                        <h3>东方意境：中国山水画</h3>
+                        <p class="exhibition-date">2026.03.01 - 2026.04.15</p>
+                        <p class="exhibition-desc">从北宋到近现代，领略中国山水画的意境之美，感受"可行可望可游可居"的艺术境界。</p>
+                        <button class="exhibition-btn" disabled>敬请期待</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 归档 -->
+    <section id="archive" class="section archive-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">历史归档</span>
+                <h2 class="section-title">往期推荐</h2>
+            </div>
+
+            <div class="archive-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="day">27</span>
+                        <span class="month">2月</span>
+                    </div>
+                    <div class="timeline-content">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/400px-Monet_-_Impression%2C_Sunrise.jpg" alt="印象·日出">
+                        <div class="timeline-info">
+                            <h4>印象·日出</h4>
+                            <p>莫奈 · 光与色彩的觉醒</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="day">26</span>
+                        <span class="month">2月</span>
+                    </div>
+                    <div class="timeline-content">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/400px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="星月夜">
+                        <div class="timeline-info">
+                            <h4>星月夜</h4>
+                            <p>梵高 · 光影与自然的对话</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">🏛️</span>
+                    <span>云上美术馆</span>
+                </div>
+                <p class="footer-desc">每日艺术推荐，让美触手可及</p>
+                <div class="footer-links">
+                    <a href="#daily">今日推荐</a>
+                    <a href="#gallery">馆藏精品</a>
+                    <a href="#exhibition">特展</a>
+                    <a href="#archive">归档</a>
+                </div>
+                <p class="footer-copyright">© 2026 云上美术馆 · 每日更新</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 图片放大模态框 -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="" id="modalImage">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

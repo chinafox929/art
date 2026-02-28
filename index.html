@@ -24,6 +24,7 @@
     .daily-artist { color: #aaa; margin-bottom: 1rem; }
     .daily-desc { line-height: 1.8; color: #ccc; }
     .footer { text-align: center; padding: 2rem; color: #666; margin-top: 4rem; }
+    @media (max-width: 768px) { .daily-card { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -46,13 +47,13 @@
   <section class="daily-section">
     <div class="daily-card">
       <div class="daily-image">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="蒙娜丽莎">
+        <img src="images/creation-of-adam.jpg" alt="创造亚当" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1280px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg'">
       </div>
       <div class="daily-info">
         <div class="daily-date">2026年02月28日 今日推荐 · 文艺复兴</div>
-        <h2 class="daily-title">蒙娜丽莎</h2>
-        <div class="daily-artist">列奥纳多·达·芬奇 · 1503-1519</div>
-        <p class="daily-desc">世界上最著名的肖像画，蒙娜丽莎神秘的微笑吸引了无数观众，是卢浮宫的镇馆之宝。</p>
+        <h2 class="daily-title">创造亚当</h2>
+        <div class="daily-artist">米开朗基罗 · 1508-1512</div>
+        <p class="daily-desc">西斯廷教堂天顶画的一部分，描绘了上帝将生命之火传给亚当的经典瞬间。</p>
       </div>
     </div>
   </section>

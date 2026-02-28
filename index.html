@@ -1,201 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>云上美术馆</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            line-height: 1.8;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10,10,10,0.95);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
-        .logo { font-size: 1.5rem; color: #c9a96e; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; }
-        .nav-links a:hover { color: #c9a96e; }
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1920px-Monet_-_Impression%2C_Sunrise.jpg') center/cover;
-        }
-        .hero h1 { font-size: 4rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
-        .btn {
-            padding: 15px 40px;
-            background: #c9a96e;
-            color: #000;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-        }
-        .section {
-            padding: 80px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #c9a96e;
-        }
-        .daily-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .daily-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        .daily-info h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .daily-info .artist {
-            color: #c9a96e;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-        .daily-info p {
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-        .galleries-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        .gallery-card {
-            position: relative;
-            height: 300px;
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            color: #fff;
-        }
-        .gallery-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .gallery-card:hover img { transform: scale(1.1); }
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-        }
-        .gallery-overlay h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .gallery-overlay p { color: #ccc; font-size: 0.9rem; }
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #141414;
-            color: #666;
-        }
-        @media (max-width: 768px) {
-            .daily-content { grid-template-columns: 1fr; }
-            .galleries-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云上美术馆</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #1a1a1a; color: #fff; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(0,0,0,0.5); }
+    .nav-brand { font-size: 1.2rem; color: #f0e68c; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; }
+    .nav-links a:hover { color: #f0e68c; }
+    .hero { text-align: center; padding: 4rem 2rem; }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .daily-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .daily-card { display: flex; gap: 2rem; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; }
+    .daily-image { flex: 1; }
+    .daily-image img { width: 100%; border-radius: 8px; }
+    .daily-info { flex: 1; padding: 1rem; }
+    .daily-date { color: #f0e68c; margin-bottom: 1rem; }
+    .daily-title { font-size: 2rem; margin-bottom: 0.5rem; }
+    .daily-artist { color: #aaa; margin-bottom: 1rem; }
+    .daily-desc { line-height: 1.8; color: #ccc; }
+    .footer { text-align: center; padding: 2rem; color: #666; margin-top: 4rem; }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">◆ 云上美术馆</div>
-        <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#daily">每日推荐</a></li>
-            <li><a href="archive.html">历史归档</a></li>
-            <li><a href="impressionism.html">印象派</a></li>
-            <li><a href="renaissance.html">文艺复兴</a></li>
-            <li><a href="chinese.html">中国书画</a></li>
-            <li><a href="modern.html">现代艺术</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="home">
-        <h1>云上美术馆</h1>
-        <p>穿越时空的艺术之旅，在云端邂逅人类文明的璀璨瑰宝</p>
-        <a href="#daily" class="btn">开始参观</a>
-    </section>
-
-    <section class="section" id="daily">
-        <h2 class="section-title">每日推荐 · 3月1日</h2>
-        <div class="daily-content">
-            <div class="daily-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/1280px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg" alt="呐喊">
-            </div>
-            <div class="daily-info">
-                <h3>呐喊</h3>
-                <p class="artist">爱德华·蒙克 | 1893年 | 挪威国家美术馆</p>
-                <p>《呐喊》是表现主义艺术的巅峰之作，描绘了一个面容扭曲的人物在血红色天空下发出无声的尖叫。蒙克以扭曲的线条和强烈的色彩对比，将现代人内心深处的焦虑、恐惧与孤独具象化。画中那道贯穿天际的声波，不仅是画中人的呐喊，更是整个时代的精神写照。一百多年后的今天，当我们面对现代生活的压力与不安，依然能从这幅画中感受到强烈的共鸣——那是人类共通的存在焦虑。</p>
-                <a href="artwork.html?gallery=modern&id=scream" class="btn">查看详情</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #141414;">
-        <h2 class="section-title">展厅入口</h2>
-        <div class="galleries-grid">
-            <a href="impressionism.html" class="gallery-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="印象派">
-                <div class="gallery-overlay">
-                    <h3>印象派展厅</h3>
-                    <p>莫奈、梵高、雷诺阿等大师杰作</p>
-                </div>
-            </a>
-            <a href="renaissance.html" class="gallery-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/600px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="文艺复兴">
-                <div class="gallery-overlay">
-                    <h3>文艺复兴展厅</h3>
-                    <p>达芬奇、米开朗基罗、拉斐尔经典之作</p>
-                </div>
-            </a>
-            <a href="chinese.html" class="gallery-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg/800px-Along_the_River_During_the_Qingming_Festival_%28Qing_Court_Version%29.jpg" alt="中国书画">
-                <div class="gallery-overlay">
-                    <h3>中国书画展厅</h3>
-                    <p>张择端、李可染、齐白石等国宝级作品</p>
-                </div>
-            </a>
-            <a href="modern.html" class="gallery-card">
-                <img src="https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg" alt="现代艺术">
-                <div class="gallery-overlay">
-                    <h3>现代艺术展厅</h3>
-                    <p>毕加索、蒙克、达利等现代大师作品</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 云上美术馆 · 每日更新</p>
-    </footer>
+  <nav class="navbar">
+    <div class="nav-brand">◆ 云上美术馆</div>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="impressionism.html">印象派</a></li>
+      <li><a href="renaissance.html">文艺复兴</a></li>
+      <li><a href="chinese.html">中国书画</a></li>
+      <li><a href="modern.html">现代艺术</a></li>
+    </ul>
+  </nav>
+  
+  <section class="hero">
+    <h1>每日艺术之旅</h1>
+    <p>每天一幅世界名画，感受艺术的魅力</p>
+  </section>
+  
+  <section class="daily-section">
+    <div class="daily-card">
+      <div class="daily-image">
+        <img src="images/dance-at-moulin.jpg" alt="煎饼磨坊的舞会">
+      </div>
+      <div class="daily-info">
+        <div class="daily-date">2026年02月28日 今日推荐 · 印象派</div>
+        <h2 class="daily-title">煎饼磨坊的舞会</h2>
+        <div class="daily-artist">皮埃尔-奥古斯特·雷诺阿 · 1876</div>
+        <p class="daily-desc">雷诺阿描绘了巴黎蒙马特高地煎饼磨坊的欢乐场景，阳光透过树叶洒在人们身上，充满生活气息。</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <p>© 2026 云上美术馆 · 每日更新</p>
+  </footer>
 </body>
 </html>

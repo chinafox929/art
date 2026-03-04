@@ -5,14 +5,45 @@
     "creation-of-adam",
     "starry-night",
     "the-scream",
-    "night-watch"
+    "night-watch",
+    "mona-lisa"
   ],
   "history": [
-    {"date": "2026-02-27", "id": "impression-sunrise", "title": "印象·日出", "artist": "克劳德·莫奈"},
-    {"date": "2026-02-28", "id": "girl-with-pearl-earring", "title": "戴珍珠耳环的少女", "artist": "约翰内斯·维米尔"},
-    {"date": "2026-03-01", "id": "creation-of-adam", "title": "创造亚当", "artist": "米开朗基罗"},
-    {"date": "2026-03-02", "id": "night-watch", "title": "夜巡", "artist": "伦勃朗·范·莱因"},
-    {"date": "2026-03-03", "id": "almond-blossom", "title": "盛开的杏花", "artist": "文森特·梵高"},
-    {"date": "2026-03-04", "id": "swan-princess", "title": "天鹅公主", "artist": "米哈伊尔·弗鲁贝尔"}
+    {
+      "date": "2026-02-27",
+      "id": "impression-sunrise",
+      "title": "印象·日出",
+      "artist": "克劳德·莫奈"
+    },
+    {
+      "date": "2026-02-28",
+      "id": "girl-with-pearl-earring",
+      "title": "戴珍珠耳环的少女",
+      "artist": "约翰内斯·维米尔"
+    },
+    {
+      "date": "2026-03-01",
+      "id": "creation-of-adam",
+      "title": "创造亚当",
+      "artist": "米开朗基罗"
+    },
+    {
+      "date": "2026-03-02",
+      "id": "night-watch",
+      "title": "夜巡",
+      "artist": "伦勃朗·范·莱因"
+    },
+    {
+      "date": "2026-03-03",
+      "id": "almond-blossom",
+      "title": "盛开的杏花",
+      "artist": "文森特·梵高"
+    },
+    {
+      "date": "2026-03-04",
+      "id": "swan-princess",
+      "title": "天鹅公主",
+      "artist": "米哈伊尔·弗鲁贝尔"
+    }
   ]
 }
